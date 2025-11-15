@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike POS System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Nike Outlet POS System</h1>
+</header>
+
+<div class="container">
+
+    <!-- PRODUCT AREA -->
+    <section class="products">
+        <h2>Products</h2>
+
+        <!-- CATEGORY FILTER -->
+        <div class="category-bar">
+            <button onclick="filterCategory('all')">All</button>
+            <button onclick="filterCategory('shoes')">Shoes</button>
+            <button onclick="filterCategory('apparel')">Apparel</button>
+            <button onclick="filterCategory('accessories')">Accessories</button>
+        </div>
+
+        <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- CART -->
+    <section class="cart">
+        <h2>Cart</h2>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body"></tbody>
+        </table>
+
+        <div class="cart-footer">
+            <h3>Total: $<span id="grand-total">0.00</span></h3>
+            <button class="pay-btn" onclick="openPayment()">Proceed to Payment</button>
+        </div>
+    </section>
+</div>
+
+<!-- PAYMENT POPUP -->
+<div class="payment-modal" id="payment-modal">
+    <div class="payment-box">
+        <h2>Payment</h2>
+
+        <p>Total: $<span id="pay-total">0.00</span></p>
+
+        <label>Cash Received:</label>
+        <input type="number" id="cash" oninput="calculateChange()">
+
+        <p>Change: $<span id="change">0.00</span></p>
+
+        <button onclick="confirmPayment()">Confirm Payment</button>
+        <button class="cancel" onclick="closePayment()">Cancel</button>
+    </div>
+</div>
+
+<!-- RECEIPT POPUP -->
+<div class="receipt-modal" id="receipt-modal">
+    <div class="receipt-box" id="receipt-box">
+        <h2>Nike Outlet Receipt</h2>
+        <p id="receipt-date"></p>
+
+        <div id="receipt-items"></div>
+
+        <p><strong>Total: ₱<span id="receipt-total"></span></strong></p>
+        <p>Cash: ₱<span id="receipt-cash"></span></p>
+        <p>Change: ₱<span id="receipt-change"></span></p>
+
+        <button onclick="printReceipt()">Print Receipt</button>
+        <button class="cancel" onclick="closeReceipt()">Close</button>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
