@@ -18,7 +18,6 @@ body {
     padding: 20px;
 }
 
-/* PRODUCTS */
 .products {
     width: 60%;
 }
@@ -71,7 +70,6 @@ body {
     background: #333;
 }
 
-/* CART */
 .cart {
     width: 40%;
     background: white;
@@ -106,7 +104,6 @@ th, td {
     background: #c72f3c;
 }
 
-/* PAYMENT POPUP */
 .payment-modal {
     position: fixed;
     top: 0;
@@ -141,7 +138,6 @@ th, td {
 .cancel:hover {
     background: #777;
 }
-/* RECEIPT POPUP */
 .receipt-modal {
     position: fixed;
     top: 0;

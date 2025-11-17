@@ -1,27 +1,23 @@
-/* PRODUCT DATABASE — PRICES IN PESO */
+
 const products = [
-    // SHOES
     { name: "Nike Air Max", price: 5995, category: "shoes" },
     { name: "Nike Air Force 1", price: 4995, category: "shoes" },
     { name: "Nike Dunk Low", price: 5495, category: "shoes" },
     { name: "Nike Pegasus 40", price: 6295, category: "shoes" },
     { name: "Nike ZoomX Vaporfly", price: 12995, category: "shoes" },
 
-    // APPAREL
     { name: "Nike Hoodie", price: 2495, category: "apparel" },
     { name: "Nike Joggers", price: 2295, category: "apparel" },
     { name: "Nike Sports Tee", price: 995, category: "apparel" },
     { name: "Nike Track Jacket", price: 3295, category: "apparel" },
     { name: "Nike Shorts", price: 1195, category: "apparel" },
 
-    // ACCESSORIES
     { name: "Nike Cap", price: 895, category: "accessories" },
     { name: "Nike Socks (3 Pack)", price: 495, category: "accessories" },
     { name: "Nike Backpack", price: 1895, category: "accessories" },
     { name: "Nike Gym Bag", price: 1495, category: "accessories" },
 ];
 
-/* DISPLAY PRODUCTS */
 function displayProducts(filter = "all") {
     const grid = document.getElementById("product-grid");
     grid.innerHTML = "";
@@ -41,12 +37,10 @@ function displayProducts(filter = "all") {
 
 displayProducts();
 
-/* FILTER CATEGORY */
 function filterCategory(category) {
     displayProducts(category);
 }
 
-/* CART SYSTEM */
 let cart = [];
 
 function addToCart(name, price) {
@@ -95,7 +89,6 @@ function removeItem(index) {
     updateCart();
 }
 
-/* PAYMENT SYSTEM */
 function openPayment() {
     document.getElementById("payment-modal").style.display = "flex";
     document.getElementById("pay-total").innerText = document.getElementById("grand-total").innerText;
@@ -133,27 +126,22 @@ function confirmPayment() {
         return;
     }
 
-    // Fill receipt
     generateReceipt(total, cash);
 
-    // Reset POS cart
     cart = [];
     updateCart();
     closePayment();
 
-    // Show receipt
     document.getElementById("receipt-modal").style.display = "flex";
 }
 
 function generateReceipt(total, cash) {
     let change = cash - total;
 
-    // date
     const now = new Date();
     document.getElementById("receipt-date").innerText =
         now.toLocaleDateString() + " " + now.toLocaleTimeString();
 
-    // items list
     let itemListHTML = `<div class='receipt-items-list'>`;
     cart.forEach(item => {
         itemListHTML += `
@@ -164,7 +152,6 @@ function generateReceipt(total, cash) {
 
     document.getElementById("receipt-items").innerHTML = itemListHTML;
 
-    // totals
     document.getElementById("receipt-total").innerText = total.toFixed(2);
     document.getElementById("receipt-cash").innerText = cash.toFixed(2);
     document.getElementById("receipt-change").innerText = change.toFixed(2);
